@@ -21,7 +21,14 @@ name.show()
 
 
 data.registerTempTable('users')
-df = spark.sql('SELECT * FROM users').withColumn('spark_user', F.lit(True))
+df = spark.sql(
+        'SELECT * FROM users'
+    ).withColumn(
+        'spark_user', F.lit(True)
+    ).drop(
+        'score'
+    )
+
 df.show()
 
 
