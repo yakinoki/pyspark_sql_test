@@ -31,5 +31,11 @@ df = spark.sql(
 
 df.show()
 
+Sumtable = data.groupby(
+    "name"
+).sum("score")
+
+Sumtable.show()
+
 
 
