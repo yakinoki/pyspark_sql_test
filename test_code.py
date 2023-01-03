@@ -13,13 +13,29 @@ spark = SparkSession.builder \
 data = spark.read.csv(filename, header=True, inferSchema=True, sep=',')
 data.show()
 
-name = data.select(F.col("name"))
+name = data.select(
+    "date",
+    F.col("name").alias("Name")
+)
 name.show()
 
 
 data.registerTempTable('users')
-df = spark.sql('SELECT * FROM users').withColumn('spark_user', F.lit(True))
+df = spark.sql(
+        'SELECT * FROM users'
+    ).withColumn(
+        'spark_user', F.lit(True)
+    ).drop(
+        'score'
+    )
+
 df.show()
+
+Sumtable = data.groupby(
+    "name"
+).sum("score")
+
+Sumtable.show()
 
 
 
