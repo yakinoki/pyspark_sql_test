@@ -19,6 +19,7 @@ name = data.select(
 )
 name.show()
 
+print(name.collect())
 
 data.registerTempTable('users')
 df = spark.sql(
