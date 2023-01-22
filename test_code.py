@@ -38,5 +38,9 @@ Sumtable = data.groupby(
 
 Sumtable.show()
 
+l = [('Alice', 1)]
+T = spark.createDataFrame(l, ['name', 'age']).collect()
+print(T)
+
 
 
