@@ -7,6 +7,8 @@ filename = 'test.csv'
 spark = SparkSession.builder \
     .master("local") \
     .appName("app") \
+    .config("spark.executor.memory", "4g") \
+    .config("spark.driver.memory", "2g") \
     .getOrCreate()
 
 # sepを；にすると、全ての列が一つにまとめられてしまう。
